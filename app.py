@@ -4,7 +4,7 @@ from os import path
 
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QLabel, QPushButton
-from PyQt5.QtGui import QFont, QPixmap, QColor
+from PyQt5.QtGui import QFont, QPixmap, QColor, QIcon
 
 import numpy as np
 from binvis.converter import convert_to_image
@@ -105,6 +105,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon('icon.ico'))
     win = MainWindow()
     win.show()
     sys.exit(app.exec_())  # Run Application
