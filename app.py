@@ -37,7 +37,7 @@ class MainWindow(QMainWindow):
 
         self.title = QLabel("Antivirus", self)
         self.title.setFont(title_font)
-        self.title.setGeometry(495, 40, 210, 55)
+        self.title.setGeometry(465, 40, 300, 55)
 
         self.image_label = QLabel(self)
         self.image_label.setGeometry(525, 165, 400, 400)
@@ -73,7 +73,8 @@ class MainWindow(QMainWindow):
         file_path, file_type = QFileDialog.getOpenFileName(self, caption="Select a .exe file", directory=os.path.join(
             os.path.join(self.__home_path, "Desktop")), filter=files_filter, initialFilter='Executables (*.exe)')
 
-        malware_file_path = ''.join(random.choices(string.ascii_letters, k=16)) + ".png"  # Create random name for the image file
+        malware_file_path = ''.join(
+            random.choices(string.ascii_letters, k=16)) + ".png"  # Create random name for the image file
 
         self.malware_image = convert_to_image(256, file_path, malware_file_path)  # Convert file to image
 
@@ -88,12 +89,12 @@ class MainWindow(QMainWindow):
         #  Modify image to fit into the model
         image_array = np.array(self.malware_image.resize((220, 220)))
         modified_image = utils.normalize_image(np.array([image_array]))
-        
+
         result = self.__model.predict(modified_image).argmax(axis=1)[0]  # Predict image
         result_str = self.__classes[result]  # Convert result to user friendly string
 
         self.confrim_button.setEnabled(False)
-        
+
         # Open new window with result
         msg = QMessageBox()
         msg.setWindowTitle("Analyzer")
@@ -102,8 +103,8 @@ class MainWindow(QMainWindow):
         self.confrim_button.setEnabled(True)
 
 
-app = QApplication(sys.argv)
-win = MainWindow()
-win.show()
-sys.exit(app.exec_())  # Run Application
-
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    win = MainWindow()
+    win.show()
+    sys.exit(app.exec_())  # Run Application
