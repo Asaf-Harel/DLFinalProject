@@ -31,16 +31,24 @@ def get_data():
                 X.append(np.array(Image.open(image_path).resize((220, 220))))  # Open the images and convert them into 220x220
                 Y.append(classes[class_name])  # Append the correspond class name
 
-    temp = list(zip(X, Y))
-    random.shuffle(temp)  # Shuffle the images
-    X, Y = zip(*temp)
     X = np.array(X)
     Y = np.array(Y)
 
     n = round(X.shape[0] * 0.7)
 
     X_train, Y_train = X[:n], Y[:n]
+    temp = list(zip(X_train, Y_train))
+    random.shuffle(temp)
+    X_train, Y_train = zip(*temp)
+    X_train = np.array(X_train)
+    Y_train = np.array(Y_train)
+
     X_test, Y_test = X[n:], Y[n:]
+    temp = list(zip(X_test, Y_test))
+    random.shuffle(temp)
+    X_test, Y_test = zip(*temp)
+    X_test = np.array(X_test)
+    Y_test = np.array(Y_test)
 
     return (X_train, Y_train), (X_test, Y_test)
 
