@@ -3,6 +3,7 @@ import string
 
 class ColorClass:
     """Convert binary value to RBG values"""
+
     def __init__(self, data):
         self.data = data  # The binary values
         s = list(set(data))
@@ -19,7 +20,7 @@ class ColorClass:
             list: The RGB values
         """
         c = self.data[x]
-        
+
         if c == 0:
             return [0, 0, 0]
         elif c == 255:
@@ -29,7 +30,6 @@ class ColorClass:
         elif chr(c) in string.printable:
             return [55, 126, 184]
         return [228, 26, 28]
-    
-    
+
     def __len__(self):
         return len(self.data)

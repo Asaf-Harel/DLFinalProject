@@ -41,6 +41,7 @@ Run the command ```pip install pyinstaller```
 ### Compile app.py
 
 Run the command ```pyinstaller app.spec```
+
 **Note:** Make sure you followed the steps above and downloaded all the necessary dependencies
 
 

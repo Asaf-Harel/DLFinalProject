@@ -1,6 +1,7 @@
 from . import utils
 import numpy as np
 
+
 def transform(entry, direction, width, x):
     assert x < 2 ** width
     assert entry < 2 ** width
