@@ -52,7 +52,7 @@ model.compile(optimizer='adam', loss=losses.sparse_categorical_crossentropy, met
 
 history = model.fit(x_train, y_train, batch_size=64, epochs=50, validation_data=(x_val, y_val))  # Start training
 
-model.save_weights('./weights/weights.h5')  # Save weights
+# model.save_weights('./weights/weights.h5')  # Save weights
 
 # Plot the loss and accuracy
 fig, axs = plt.subplots(2, 1, figsize=(15, 15))
